@@ -89,6 +89,9 @@ COPY package.json yarn.lock ./
 COPY packages/ packages/
 COPY ui/ ui/
 
+# Ensure proper ownership of all files
+RUN chown -R docker:docker /usr/src/app
+
 # Install Node dependencies
 RUN yarn install --frozen-lockfile --production
 
